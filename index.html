@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,26 +45,27 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Aquí se insertarán dinámicamente los datos -->
+            <!-- Los datos se cargarán aquí dinámicamente -->
         </tbody>
     </table>
     <script>
-        // Datos simulados para prueba
-        const productos = [
-            { nombre: "Binocular A", precio: "$200.000" },
-            { nombre: "Binocular B", precio: "$150.000" },
-            { nombre: "Binocular C", precio: "$300.000" },
-        ];
-
-        // Obtener la referencia del cuerpo de la tabla
-        const tbody = document.getElementById("productos").querySelector("tbody");
-
-        // Agregar filas con los productos
-        productos.forEach(producto => {
-            const fila = document.createElement("tr");
-            fila.innerHTML = `<td>${producto.nombre}</td><td>${producto.precio}</td>`;
-            tbody.appendChild(fila);
-        });
+        // Cargar datos desde productos.json
+        fetch('./productos.json')
+            .then(response => response.json())
+            .then(productos => {
+                const tbody = document.getElementById("productos").querySelector("tbody");
+                productos.forEach(producto => {
+                    const fila = document.createElement("tr");
+                    fila.innerHTML = `<td>${producto.nombre}</td><td>${producto.precio}</td>`;
+                    tbody.appendChild(fila);
+                });
+            })
+            .catch(error => {
+                console.error("Error al cargar los datos:", error);
+                const tbody = document.getElementById("productos").querySelector("tbody");
+                tbody.innerHTML = `<tr><td colspan="2">No se pudieron cargar los datos.</td></tr>`;
+            });
     </script>
 </body>
 </html>
+
