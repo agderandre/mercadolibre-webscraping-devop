@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos MercadoLibre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f8f8;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Productos Extraídos de MercadoLibre</h1>
+    <table id="productos">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se insertarán dinámicamente los datos -->
+        </tbody>
+    </table>
+    <script>
+        // Datos simulados para prueba
+        const productos = [
+            { nombre: "Binocular A", precio: "$200.000" },
+            { nombre: "Binocular B", precio: "$150.000" },
+            { nombre: "Binocular C", precio: "$300.000" },
+        ];
+
+        // Obtener la referencia del cuerpo de la tabla
+        const tbody = document.getElementById("productos").querySelector("tbody");
+
+        // Agregar filas con los productos
+        productos.forEach(producto => {
+            const fila = document.createElement("tr");
+            fila.innerHTML = `<td>${producto.nombre}</td><td>${producto.precio}</td>`;
+            tbody.appendChild(fila);
+        });
+    </script>
+</body>
+</html>
